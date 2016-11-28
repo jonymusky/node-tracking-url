@@ -28,7 +28,7 @@ var carriers = module.exports.carriers = [
 		name : 'fedex'
 		, url : 'https://www.fedex.com/apps/fedextrack/?tracknumbers={trackingNumber}'
 		, regs : [
-			/(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)/
+			/(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)|(\b\d{20}\b)/
 			, /\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b/
 			, /^[0-9]{15}$/
 		]
@@ -37,7 +37,7 @@ var carriers = module.exports.carriers = [
 		name : 'usps'
 		, url : 'https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1={trackingNumber}'
 		, regs : [
-			/(\b\d{30}\b)|(\b91\d+\b)|(\b\d{20}\b)/
+			/(\b\d{30}\b)|(\b91\d+\b)/
 			, /^E\D{1}\d{9}\D{2}$|^9\d{15,21}$/
 			, /^91[0-9]+$/
 			, /^[A-Za-z]{2}[0-9]+US$/
