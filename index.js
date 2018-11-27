@@ -31,6 +31,7 @@ var carriers = module.exports.carriers = [
 			/(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)|(\b\d{20}\b)/
 			, /\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b/
 			, /^[0-9]{15}$/
+			, /^[0-9]{9}$/ //TNT
 		]
 	}
 	, {
