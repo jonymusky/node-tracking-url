@@ -31,7 +31,6 @@ var carriers = module.exports.carriers = [
 			/(\b96\d{20}\b)|(\b\d{15}\b)|(\b\d{12}\b)|(\b\d{20}\b)/
 			, /\b((98\d\d\d\d\d?\d\d\d\d|98\d\d) ?\d\d\d\d ?\d\d\d\d( ?\d\d\d)?)\b/
 			, /^[0-9]{15}$/
-			, /^[0-9]{9}$/ //TNT
 		]
 	}
 	, {
@@ -51,11 +50,18 @@ var carriers = module.exports.carriers = [
 			/^\d{10,11}$/
 		]
 	}
+	, {
+		name : 'tnt'
+		, url : 'https://www.tnt.com/express/en_us/site/tracking.html?cons={trackingNumber}&searchType=CON'
+		, regs : [
+			/^[0-9]{9}$/
+		]
+	}
 ];
 
 var regs = [];
 
-carriers.forEach(function (carrier) { 
+carriers.forEach(function (carrier) {
 	carrier.regs.forEach(function (reg) {
 		reg.carrier = carrier;
 		regs.push(reg);
@@ -65,14 +71,14 @@ carriers.forEach(function (carrier) {
 function getTrackingUrl(trackingNumber) {
 	var found = false;
 	var reg;
-	
+
 	//remove spaces from the tracking number
 	trackingNumber = (trackingNumber || "").replace(/\ /gi, '');
 
 
 	for (var x = 0; x < regs.length; x++) {
 		reg = regs[x];
-		
+
 		if (reg.test(trackingNumber)) {
 			found = true;
 			break;
@@ -87,4 +93,3 @@ function getTrackingUrl(trackingNumber) {
 	}
 	else return null;
 }
-
