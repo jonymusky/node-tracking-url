@@ -38,6 +38,7 @@ var carriers = module.exports.carriers = [
 		, url : 'https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1={trackingNumber}'
 		, regs : [
 			/(\b\d{30}\b)|(\b91\d+\b)/
+			, /(\b\d{26}\b)|(\b91\d+\b)/
 			, /^E\D{1}\d{9}\D{2}$|^9\d{15,21}$/
 			, /^91[0-9]+$/
 			, /^[A-Za-z]{2}[0-9]+US$/
